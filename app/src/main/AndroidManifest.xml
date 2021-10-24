@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="tn.esprit.myhealthyfoodapp">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.MyHealthyFoodApp">
+        <activity
+            android:name=".adapter.ExtratAdapterActivity"
+            android:exported="true" />
+        <activity
+            android:name=".controller.ExtraActivity"
+            android:exported="true" />
+        <activity
+            android:name=".controller.RecepiesActivity"
+            android:exported="true" />
+        <activity
+            android:name=".controller.ProfileActivity"
+            android:exported="true" />
+        <activity
+            android:name=".controller.MenuNavActivity"
+            android:exported="true"
+            android:label="@string/title_activity_menu_nav" />
+        <activity
+            android:name=".controller.RecipeDetails"
+            android:exported="true" />
+        <activity
+            android:name=".adapter.RecipesAdapter"
+            android:exported="true" />
+        <activity
+            android:name=".controller.HomeActivity"
+            android:exported="true" />
+        <activity
+            android:name=".controller.LoginActivity"
+            android:exported="true" />
+        <activity
+            android:name=".controller.GetStartedActivity"
+            android:exported="true" />
+        <activity
+            android:name=".controller.MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <receiver android:name=".controller.ReminderBroadcast" />
+    </application>
+
+</manifest>

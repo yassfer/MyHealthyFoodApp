@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".controller.LoginActivity"
+    android:gravity="center_horizontal"
+    android:background="@drawable/f4"
+    android:alpha="0.9">
+
+    <TextView
+        android:id="@+id/main_textview_greeting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:layout_marginTop="10dp"
+        android:text="Welcome!"
+        android:textColor="@color/color1"
+        android:textSize="35dp"
+        android:textStyle="bold"
+        android:letterSpacing="0.03"/>
+
+    <EditText
+        android:id="@+id/name_textview"
+        android:layout_width="350dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/forget"
+        android:hint="Username"
+        android:paddingLeft="20dp"
+        android:textColor="@color/textColor"
+        android:textSize="18dp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/age_textview"
+        android:layout_width="350dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/forget"
+        android:hint="Age"
+        android:paddingLeft="20dp"
+        android:textColor="@color/textColor"
+        android:textSize="18dp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/height_textview"
+        android:layout_width="350dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/forget"
+        android:hint="Height"
+        android:paddingLeft="20dp"
+        android:textColor="@color/textColor"
+        android:textSize="18dp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/weight_textview"
+        android:layout_width="350dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/forget"
+        android:hint="Weight"
+        android:paddingLeft="20dp"
+        android:textColor="@color/textColor"
+        android:textSize="18dp"
+        android:textStyle="bold" />
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:background="@drawable/button"
+        android:text="Let's start"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:textColor="@color/textColor"
+        android:layout_marginTop="25dp"/>
+</androidx.appcompat.widget.LinearLayoutCompat>
