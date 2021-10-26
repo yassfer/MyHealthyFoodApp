@@ -1,45 +1,49 @@
 package tn.esprit.myhealthyfoodapp.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 
 public class Category implements Serializable {
-    private int idCategory;
-    private String categoryName;
-    private String categoryDescription;
+
+    public static ArrayList<Category> categoryList = new ArrayList<>();
+
+    private int id;
+    private String category_name;
+    private String category_description;
     private String image;
     private List<Recipe> recipes;
 
-    public Category(int idCategory, String categoryName, String categoryDescription, String image) {
-        this.idCategory = idCategory;
-        this.categoryName = categoryName;
-        this.categoryDescription = categoryDescription;
+    public Category(int id, String category_name, String category_description, String image) {
+        this.id = id;
+        this.category_name = category_name;
+        this.category_description = category_description;
         this.image = image;
     }
 
-    public int getidCategory() {
-        return idCategory;
+    public int getId() {
+        return id;
     }
 
-    public void setidCategory(int dCategory) {
-        this.idCategory = dCategory;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getCategoryName() {
-        return categoryName;
+    public String getCategory_name() {
+        return category_name;
     }
 
-    public void setCategoryName(String categoryName) {
-        this.categoryName = categoryName;
+    public void setCategory_name(String category_name) {
+        this.category_name = category_name;
     }
 
-    public String getCategoryDescription() {
-        return categoryDescription;
+    public String getCategory_description() {
+        return category_description;
     }
 
-    public void setCategoryDescription(String categoryDescription) {
-        this.categoryDescription = categoryDescription;
+    public void setCategory_description(String category_description) {
+        this.category_description = category_description;
     }
 
     public String getImage() {
@@ -48,14 +52,6 @@ public class Category implements Serializable {
 
     public void setImage(String image) {
         this.image = image;
-    }
-
-    public int getIdCategory() {
-        return idCategory;
-    }
-
-    public void setIdCategory(int idCategory) {
-        this.idCategory = idCategory;
     }
 
     public List<Recipe> getRecipes() {

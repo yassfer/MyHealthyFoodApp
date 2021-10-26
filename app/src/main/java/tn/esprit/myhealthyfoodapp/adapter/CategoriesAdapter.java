@@ -74,7 +74,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Ca
             Picasso.get().load(currentCategory.getImage())
                     .into(holder.recipeImage);
         }
-        holder.recipeTitle.setText(currentCategory.getCategoryName());
+        holder.recipeTitle.setText(currentCategory.getCategory_name());
         // Ensure CardView is clickable
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override

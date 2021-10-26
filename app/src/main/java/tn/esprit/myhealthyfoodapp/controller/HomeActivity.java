@@ -19,6 +19,7 @@ import java.util.Arrays;
 
 import tn.esprit.myhealthyfoodapp.R;
 import tn.esprit.myhealthyfoodapp.adapter.CategoriesAdapter;
+import tn.esprit.myhealthyfoodapp.db.MyDatabaseHelper;
 import tn.esprit.myhealthyfoodapp.model.Categories;
 import tn.esprit.myhealthyfoodapp.model.Category;
 
@@ -27,7 +28,7 @@ public class HomeActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private BottomNavigationView bottomNav;
 
-    Categories categories = generateCategories();
+    //Categories categories = generateCategories();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +41,46 @@ public class HomeActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerView);
         bottomNav = findViewById(R.id.navigation);
 
+        MyDatabaseHelper db = new MyDatabaseHelper(HomeActivity.this);
+        db.addCategory(
+                "Beaf",
+                "Beaf",
+                "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/roast-beef-recipes-536cd86.jpg?quality=90&resize=440,400"
+        );
+        db.addCategory(
+                "Chicken",
+                "Chicken",
+                "https://assets.bonappetit.com/photos/5f32b10ad8a686d03a8e3087/1:1/w_2560%2Cc_limit/Caesar-Salad-Roast-Chicken.jpg"
+        );
+        db.addCategory(
+                "Salads",
+                "Salads",
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKohmRwkizxD_Yx1NQzHkWNE6Pn_cgcrGQ8g&usqp=CAU"
+        );
+        db.addCategory(
+                "Breakfast",
+                "Breakfast",
+                "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/creamy-oatmeal-bowl-with-banana-blueberries-royalty-free-image-1619015007.?crop=0.806xw:1.00xh;0.0749xw,0&resize=640:*"
+        );
+        db.addCategory(
+                "Dessert",
+                "Dessert",
+                "https://i.f1g.fr/media/madame/1900x1900/sites/default/files/img/2016/08/inspirations-photo-20.jpg"
+        );
+
+        db.addCategory(
+                "Drinks",
+                "Drinks",
+                "https://www.myfussyeater.com/wp-content/uploads/2017/06/Healthy-Watermelon-Lemonade_002.jpg"
+        );
+        loadFromDBToMemory();
+
+        recyclerView.setHasFixedSize(true);
+        int numberOfColumns = 2;
+        recyclerView.setLayoutManager(new GridLayoutManager(this, numberOfColumns));
+        RecyclerView.Adapter mAdapter = new CategoriesAdapter(this, Category.categoryList);
+        recyclerView.setAdapter(mAdapter);
+
         this.configureBottomView();
     }
 
@@ -48,22 +89,22 @@ public class HomeActivity extends AppCompatActivity {
         super.onStart();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        for (int i = 0; i < categories.getCategoryList().size(); i++) {
-            DisplayRecipeCards();
-
-        }
     }
 
 
-    public void DisplayRecipeCards() {
+    /*public void DisplayRecipeCards() {
         recyclerView.setHasFixedSize(true);
         int numberOfColumns = 2;
         recyclerView.setLayoutManager(new GridLayoutManager(this, numberOfColumns));
         RecyclerView.Adapter mAdapter = new CategoriesAdapter(this, categories.getCategoryList());
         recyclerView.setAdapter(mAdapter);
-    }
+    }*/
 
-    private Categories generateCategories() {
+    private void loadFromDBToMemory() {
+        MyDatabaseHelper dbhelper = MyDatabaseHelper.instanceOfDatabase(this);
+        dbhelper.getCategoriesListArray();
+    }
+    /*private Categories generateCategories() {
         Category category1 = new Category(
                 1,
                 "Beaf",
@@ -105,7 +146,7 @@ public class HomeActivity extends AppCompatActivity {
                 "https://www.myfussyeater.com/wp-content/uploads/2017/06/Healthy-Watermelon-Lemonade_002.jpg"
         );
         return new Categories(Arrays.asList(category1, category2, category3, category4, category5, category6));
-    }
+    }*/
 
     private void configureBottomView(){
         bottomNav.setOnNavigationItemSelectedListener(item -> updateActivity(item.getItemId()));
