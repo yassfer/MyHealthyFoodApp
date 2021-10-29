@@ -24,12 +24,15 @@
         <entry key="..\:/Users/dell/AndroidStudioProjects/MyHealthyFoodApp/app/src/main/res/layout/activity_recipes_adapter.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/dell/AndroidStudioProjects/MyHealthyFoodApp/app/src/main/res/menu/bottom_nav_menu.xml" value="0.1" />
         <entry key="..\:/Users/dell/AndroidStudioProjects/new/MyHealthyFoodApp-main/app/src/main/res/drawable/account_chip_bg.xml" value="0.2203125" />
+        <entry key="..\:/Users/dell/AndroidStudioProjects/new/MyHealthyFoodApp-main/app/src/main/res/drawable/bg.xml" value="0.1125" />
         <entry key="..\:/Users/dell/AndroidStudioProjects/new/MyHealthyFoodApp-main/app/src/main/res/drawable/button.xml" value="0.2203125" />
         <entry key="..\:/Users/dell/AndroidStudioProjects/new/MyHealthyFoodApp-main/app/src/main/res/drawable/button_bg.xml" value="0.2203125" />
         <entry key="..\:/Users/dell/AndroidStudioProjects/new/MyHealthyFoodApp-main/app/src/main/res/drawable/forget.xml" value="0.2169230769230769" />
         <entry key="..\:/Users/dell/AndroidStudioProjects/new/MyHealthyFoodApp-main/app/src/main/res/drawable/grad.xml" value="0.2203125" />
         <entry key="..\:/Users/dell/AndroidStudioProjects/new/MyHealthyFoodApp-main/app/src/main/res/drawable/ic_account.xml" value="0.1125" />
         <entry key="..\:/Users/dell/AndroidStudioProjects/new/MyHealthyFoodApp-main/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.1125" />
+        <entry key="..\:/Users/dell/AndroidStudioProjects/new/MyHealthyFoodApp-main/app/src/main/res/drawable/ic_restaurant_black_24dp.xml" value="0.2203125" />
+        <entry key="..\:/Users/dell/AndroidStudioProjects/new/MyHealthyFoodApp-main/app/src/main/res/drawable/ic_timer.xml" value="0.2203125" />
         <entry key="..\:/Users/dell/AndroidStudioProjects/new/MyHealthyFoodApp-main/app/src/main/res/drawable/rectangle_background.xml" value="0.2169230769230769" />
         <entry key="..\:/Users/dell/AndroidStudioProjects/new/MyHealthyFoodApp-main/app/src/main/res/layout/activity_categories_adapter.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/dell/AndroidStudioProjects/new/MyHealthyFoodApp-main/app/src/main/res/layout/activity_extra.xml" value="0.1" />
@@ -40,9 +43,11 @@
         <entry key="..\:/Users/dell/AndroidStudioProjects/new/MyHealthyFoodApp-main/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/dell/AndroidStudioProjects/new/MyHealthyFoodApp-main/app/src/main/res/layout/activity_menu_nav.xml" value="0.1" />
         <entry key="..\:/Users/dell/AndroidStudioProjects/new/MyHealthyFoodApp-main/app/src/main/res/layout/activity_notification.xml" value="0.1" />
+        <entry key="..\:/Users/dell/AndroidStudioProjects/new/MyHealthyFoodApp-main/app/src/main/res/layout/activity_profil.xml" value="0.19202898550724637" />
         <entry key="..\:/Users/dell/AndroidStudioProjects/new/MyHealthyFoodApp-main/app/src/main/res/layout/activity_profile.xml" value="0.2033514492753623" />
         <entry key="..\:/Users/dell/AndroidStudioProjects/new/MyHealthyFoodApp-main/app/src/main/res/layout/activity_recepies.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/dell/AndroidStudioProjects/new/MyHealthyFoodApp-main/app/src/main/res/layout/activity_recipe_details.xml" value="0.1" />
+        <entry key="..\:/Users/dell/AndroidStudioProjects/new/MyHealthyFoodApp-main/app/src/main/res/layout/activity_recipes_adapter.xml" value="0.19701086956521738" />
         <entry key="..\:/Users/dell/AndroidStudioProjects/new/MyHealthyFoodApp-main/app/src/main/res/layout/fragment_home.xml" value="0.1" />
         <entry key="..\:/Users/dell/AndroidStudioProjects/new/MyHealthyFoodApp-main/app/src/main/res/layout/fragment_notifications.xml" value="0.1" />
         <entry key="..\:/Users/dell/AndroidStudioProjects/new/MyHealthyFoodApp-main/app/src/main/res/menu/bottom_nav_menu.xml" value="0.1" />

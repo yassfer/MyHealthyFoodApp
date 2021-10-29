@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">MyHealthyFoodApp</string>
     <string name="recipe_title">Recipe Title</string>
+    <string name="category_title">Category Title</string>
     <string name="img_of_recipe">image of recipe</string>
+    <string name="img_of_category">image of category</string>
     <string name="title_activity_menu_nav">MenuNavActivity</string>
     <string name="title_home">Home</string>
     <string name="title_profile">Profile</string>

@@ -96,7 +96,7 @@ public class ExtraActivity extends AppCompatActivity {
                 break;
 
             case R.id.navigation_profile:
-                activity = new ProfileActivity();
+                activity = new ProfilActivity();
                 break;
             case R.id.navigation_notifications:
                 activity = new ExtraActivity();

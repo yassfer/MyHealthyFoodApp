@@ -25,24 +25,21 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Ca
 
     /* start of inner ViewHolder class */
     public static class CategoryViewHolder extends RecyclerView.ViewHolder {
-        // declare views
-        public ImageView recipeImage;
-        public TextView recipeTitle;
+
+        public ImageView categoryImage;
+        public TextView categoryTitle;
         public CardView cardView;
 
         // Constructor to this inner class
         public CategoryViewHolder(@NonNull View itemView) {
             super(itemView);
-            // assign views
-            System.out.println("title of recipe"+ R.id.title_of_recipe  );
-            recipeImage = itemView.findViewById(R.id.image_of_recipe);
-            recipeTitle = itemView.findViewById(R.id.title_of_recipe);
-            cardView = (CardView) itemView.findViewById(R.id.cardView);
+            categoryImage = itemView.findViewById(R.id.image_of_category);
+            categoryTitle = itemView.findViewById(R.id.title_of_category);
+            cardView = (CardView) itemView.findViewById(R.id.category_cardView);
         }
     }
     /* out of inner class : ViewHolder */
 
-    private final String TAG = "RecipesAdapter";
     private Context mContext;
     private List<Category> mData;
 
@@ -61,25 +58,27 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Ca
     @Override
     public void onBindViewHolder(@NonNull CategoryViewHolder holder, int position) {
         Category currentCategory = mData.get(position);
-        System.out.println(currentCategory);
+        System.out.println("Data Size:: "+mData.size());
         // Bind Recipe Data to the Card Views
         if (currentCategory.getImage().isEmpty()) {
             // No image
-            holder.recipeImage.setImageResource(R.drawable.nopicture);
+            holder.categoryImage.setImageResource(R.drawable.nopicture);
         } else {
 
             System.out.println("entered else"+currentCategory.getImage());
             /*Bitmap bitmap = BitmapFactory.decodeFile(currentRecipe.getRecipeImage());
             holder.recipeImage.setImageBitmap(bitmap);*/
             Picasso.get().load(currentCategory.getImage())
-                    .into(holder.recipeImage);
+                    .into(holder.categoryImage);
         }
-        holder.recipeTitle.setText(currentCategory.getCategory_name());
+        holder.categoryTitle.setText(currentCategory.getCategory_name());
         // Ensure CardView is clickable
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                v.getContext().startActivity(new Intent(v.getContext(), RecepiesActivity.class));
+                Intent i = new Intent(v.getContext(), RecepiesActivity.class);
+                i.putExtra("ID_CATEGORY",currentCategory.getId());
+                v.getContext().startActivity(i);
             }
         });
 

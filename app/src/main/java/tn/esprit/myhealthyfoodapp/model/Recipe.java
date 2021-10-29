@@ -3,92 +3,85 @@ package tn.esprit.myhealthyfoodapp.model;
 import java.util.ArrayList;
 
 public class Recipe {
-    private String id;
-    private String recipeTitle;
-    private String recipeImage;
-    private int numServings;
-    private int readyInMins;
-    private double healthScore;
-    private double foodFitScore;
-    private ArrayList<Ingredient> ingredients = new ArrayList<Ingredient>();
-    private int idCategory;
+    public static ArrayList<Recipe> recipeList = new ArrayList<>();
 
-    public Recipe(String id, String recipeTitle, String recipeImage, int numServings, int readyInMins, double healthScore, double foodFitScore, int idCategory) {
+    private int id;
+    private String recipe_title;
+    private String recipe_image;
+    private int num_servings;
+    private int ready_in_mins;
+    private float calories;
+    private ArrayList<Ingredient> ingredients = new ArrayList<Ingredient>();
+    private int id_category;
+    private int favorite;
+
+    public Recipe(int id, String recipe_title, String recipe_image, int num_servings, int ready_in_mins, float calories, ArrayList<Ingredient> ingredients) {
         this.id = id;
-        this.recipeTitle = recipeTitle;
-        this.recipeImage = recipeImage;
-        this.numServings = numServings;
-        this.readyInMins = readyInMins;
-        this.healthScore = healthScore;
-        this.foodFitScore = foodFitScore;
-        this.idCategory = idCategory;
-    }
-    public Recipe(String id, String recipeTitle, String recipeImage, int numServings, int readyInMins, double healthScore, double foodFitScore, ArrayList<Ingredient> ingredients) {
-        this.id = id;
-        this.recipeTitle = recipeTitle;
-        this.recipeImage = recipeImage;
-        this.numServings = numServings;
-        this.readyInMins = readyInMins;
-        this.healthScore = healthScore;
-        this.foodFitScore = foodFitScore;
+        this.recipe_title = recipe_title;
+        this.recipe_image = recipe_image;
+        this.num_servings = num_servings;
+        this.ready_in_mins = ready_in_mins;
+        this.calories = calories;
         this.ingredients = ingredients;
     }
 
+    public Recipe(int id, String recipe_title, String recipe_image, int num_servings, int ready_in_mins, float calories, int id_category, int favorite) {
+        this.id = id;
+        this.recipe_title = recipe_title;
+        this.recipe_image = recipe_image;
+        this.num_servings = num_servings;
+        this.ready_in_mins = ready_in_mins;
+        this.calories = calories;
+        this.id_category = id_category;
+        this.favorite = favorite;
+    }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public String getRecipeTitle() {
-        return recipeTitle;
+    public String getRecipe_title() {
+        return recipe_title;
     }
 
-    public void setRecipeTitle(String recipeTitle) {
-        this.recipeTitle = recipeTitle;
+    public void setRecipe_title(String recipe_title) {
+        this.recipe_title = recipe_title;
     }
 
-    public String getRecipeImage() {
-        return recipeImage;
+    public String getRecipe_image() {
+        return recipe_image;
     }
 
-    public void setRecipeImage(String recipeImage) {
-        this.recipeImage = recipeImage;
+    public void setRecipe_image(String recipe_image) {
+        this.recipe_image = recipe_image;
     }
 
-    public int getNumServings() {
-        return numServings;
+    public int getNum_servings() {
+        return num_servings;
     }
 
-    public void setNumServings(int numServings) {
-        this.numServings = numServings;
+    public void setNum_servings(int num_servings) {
+        this.num_servings = num_servings;
     }
 
-    public int getReadyInMins() {
-        return readyInMins;
+    public int getReady_in_mins() {
+        return ready_in_mins;
     }
 
-    public void setReadyInMins(int readyInMins) {
-        this.readyInMins = readyInMins;
+    public void setReady_in_mins(int ready_in_mins) {
+        this.ready_in_mins = ready_in_mins;
     }
 
-    public double getHealthScore() {
-        return healthScore;
+    public float getCalories() {
+        return calories;
     }
 
-    public void setHealthScore(double healthScore) {
-        this.healthScore = healthScore;
-    }
-
-    public double getFoodFitScore() {
-        return foodFitScore;
-    }
-
-    public void setFoodFitScore(double foodFitScore) {
-        this.foodFitScore = foodFitScore;
+    public void setCalories(float calories) {
+        this.calories = calories;
     }
 
     public ArrayList<Ingredient> getIngredients() {
@@ -99,11 +92,19 @@ public class Recipe {
         this.ingredients = ingredients;
     }
 
-    public int getIdCategory() {
-        return idCategory;
+    public int getId_category() {
+        return id_category;
     }
 
-    public void setIdCategory(int idCategory) {
-        this.idCategory = idCategory;
+    public void setId_category(int id_category) {
+        this.id_category = id_category;
+    }
+
+    public int getFavorite() {
+        return favorite;
+    }
+
+    public void setFavorite(int favorite) {
+        this.favorite = favorite;
     }
 }

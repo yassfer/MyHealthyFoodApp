@@ -29,6 +29,7 @@ public class RecipeDetails extends AppCompatActivity {
     private final String TAG = "RecipeDetails";
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
+    private int idRecipe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +44,9 @@ public class RecipeDetails extends AppCompatActivity {
         title.setText(cs);
         //System.out.println((String) Objects.requireNonNull(intent.getExtras()).getString("img"));
         //fetchAndDisplayRecipeInfo(recipeId);
+
+        idRecipe= getIntent().getExtras().getInt("ID_RECIPE");
+        System.out.println("id recipe:: "+idRecipe);
     }
 
     @Override

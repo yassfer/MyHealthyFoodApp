@@ -31,7 +31,6 @@ public class ExtratAdapter extends RecyclerView.Adapter<ExtratAdapter.ExtratView
         public ExtratViewHolder(@NonNull View itemView) {
             super(itemView);
             // assign views
-            System.out.println("title of recipe"+ R.id.title_of_recipe  );
             extratImage = itemView.findViewById(R.id.image_extrat);
             extratTitle = itemView.findViewById(R.id.title_extrat);
             cardView = (CardView) itemView.findViewById(R.id.cardView_extrat);
