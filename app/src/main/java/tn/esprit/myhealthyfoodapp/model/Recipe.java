@@ -11,18 +11,18 @@ public class Recipe {
     private int num_servings;
     private int ready_in_mins;
     private float calories;
-    private ArrayList<Ingredient> ingredients = new ArrayList<Ingredient>();
     private int id_category;
     private int favorite;
+    private String ingredients;
+    private String instructions;
 
-    public Recipe(int id, String recipe_title, String recipe_image, int num_servings, int ready_in_mins, float calories, ArrayList<Ingredient> ingredients) {
+    public Recipe(int id, String recipe_title, String recipe_image, int num_servings, int ready_in_mins, float calories) {
         this.id = id;
         this.recipe_title = recipe_title;
         this.recipe_image = recipe_image;
         this.num_servings = num_servings;
         this.ready_in_mins = ready_in_mins;
         this.calories = calories;
-        this.ingredients = ingredients;
     }
 
     public Recipe(int id, String recipe_title, String recipe_image, int num_servings, int ready_in_mins, float calories, int id_category, int favorite) {
@@ -34,6 +34,31 @@ public class Recipe {
         this.calories = calories;
         this.id_category = id_category;
         this.favorite = favorite;
+    }
+
+    public Recipe(int id, String recipe_title, String recipe_image, int num_servings, int ready_in_mins, float calories, int id_category, int favorite, String ingredients) {
+        this.id = id;
+        this.recipe_title = recipe_title;
+        this.recipe_image = recipe_image;
+        this.num_servings = num_servings;
+        this.ready_in_mins = ready_in_mins;
+        this.calories = calories;
+        this.ingredients = ingredients;
+        this.id_category = id_category;
+        this.favorite = favorite;
+    }
+
+    public Recipe(int id, String recipe_title, String recipe_image, int num_servings, int ready_in_mins, float calories, int id_category, int favorite, String ingredients, String instructions) {
+        this.id = id;
+        this.recipe_title = recipe_title;
+        this.recipe_image = recipe_image;
+        this.num_servings = num_servings;
+        this.ready_in_mins = ready_in_mins;
+        this.calories = calories;
+        this.id_category = id_category;
+        this.favorite = favorite;
+        this.ingredients = ingredients;
+        this.instructions = instructions;
     }
 
     public int getId() {
@@ -84,11 +109,11 @@ public class Recipe {
         this.calories = calories;
     }
 
-    public ArrayList<Ingredient> getIngredients() {
+    public String getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(ArrayList<Ingredient> ingredients) {
+    public void setIngredients(String ingredients) {
         this.ingredients = ingredients;
     }
 
@@ -106,5 +131,21 @@ public class Recipe {
 
     public void setFavorite(int favorite) {
         this.favorite = favorite;
+    }
+
+    public static ArrayList<Recipe> getRecipeList() {
+        return recipeList;
+    }
+
+    public static void setRecipeList(ArrayList<Recipe> recipeList) {
+        Recipe.recipeList = recipeList;
+    }
+
+    public String getInstructions() {
+        return instructions;
+    }
+
+    public void setInstructions(String instructions) {
+        this.instructions = instructions;
     }
 }

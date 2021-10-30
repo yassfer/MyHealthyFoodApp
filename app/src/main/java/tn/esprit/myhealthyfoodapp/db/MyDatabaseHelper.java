@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import tn.esprit.myhealthyfoodapp.model.Category;
+import tn.esprit.myhealthyfoodapp.model.Ingredient;
 import tn.esprit.myhealthyfoodapp.model.Recipe;
 
 public class MyDatabaseHelper extends SQLiteOpenHelper {
@@ -16,6 +17,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
     private static final String TABLE1 = "CATEGORY";
     private static final String TABLE2 = "RECIPE";
+    private static final String TABLE3 = "INGREDIENT";
     private static final String KEY_ROWID = "_id";
     private static MyDatabaseHelper myDatabaseHelper;
 
@@ -30,15 +32,19 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE1);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE2);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE3);
+
+
         onCreate(db);
     }
     @Override
     public void onCreate(SQLiteDatabase db) {
         String sql1 = "CREATE TABLE CATEGORY (_id INTEGER PRIMARY KEY AUTOINCREMENT,category_name TEXT,category_description TEXT, image TEXT)";
-        String sql2 = "CREATE TABLE RECIPE (_id INTEGER PRIMARY KEY AUTOINCREMENT,recipe_title TEXT,recipe_image TEXT,num_servings INTEGER,ready_in_mins INTEGER,calories REAL, id_category INTEGER, favorite INTEGER )";
-
+        String sql2 = "CREATE TABLE RECIPE (_id INTEGER PRIMARY KEY AUTOINCREMENT,recipe_title TEXT,recipe_image TEXT,num_servings INTEGER,ready_in_mins INTEGER,calories REAL, id_category INTEGER, favorite INTEGER, ingredients TEXT,instructions TEXT )";
+        String sql3 = "CREATE TABLE INGREDIENT (_id INTEGER PRIMARY KEY AUTOINCREMENT,name TEXT,thumbnail TEXT)";
         db.execSQL(sql1);
         db.execSQL(sql2);
+        db.execSQL(sql3);
     }
 
     public void tryDB1(){
@@ -52,8 +58,15 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL("DROP TABLE IF EXISTS " + TABLE2);
         System.out.println("Table 2 dropped succ !!!");
-        String sql2 = "CREATE TABLE RECIPE (_id INTEGER PRIMARY KEY AUTOINCREMENT,recipe_title TEXT,recipe_image TEXT,num_servings INTEGER,ready_in_mins INTEGER,calories REAL, id_category INTEGER, favorite INTEGER)";
+        String sql2 = "CREATE TABLE RECIPE (_id INTEGER PRIMARY KEY AUTOINCREMENT,recipe_title TEXT,recipe_image TEXT,num_servings INTEGER,ready_in_mins INTEGER,calories REAL, id_category INTEGER, favorite INTEGER, ingredients TEXT, instructions TEXT)";
         db.execSQL(sql2);
+    }
+    public void tryDB3(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE3);
+        System.out.println("Table 2 dropped succ !!!");
+        String sql3 = "CREATE TABLE INGREDIENT (_id INTEGER PRIMARY KEY AUTOINCREMENT,name TEXT,thumbnail TEXT)";
+        db.execSQL(sql3);
     }
     // Add Category
     public void addCategory(String category_name, String category_description, String image) {
@@ -78,7 +91,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         return cursor;
     }
     //Add Recipe
-    public void addRecipe(String recipe_title, String recipe_image, int num_servings, int ready_in_mins, float calories, int id_category) {
+    public void addRecipe(String recipe_title, String recipe_image, int num_servings, int ready_in_mins, float calories, int id_category, String ingredients, String instructions) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 
@@ -89,6 +102,8 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         cv.put("calories", calories);
         cv.put("id_category", id_category);
         cv.put("favorite", 0);
+        cv.put("ingredients", ingredients);
+        cv.put("instructions", instructions);
         db.insert("RECIPE", null, cv);
     }
 
@@ -136,7 +151,10 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
                     float calories = result.getFloat(5);
                     int id_category = result.getInt(6);
                     int favorite = result.getInt(7);
-                    Recipe recipe = new Recipe(id, recipe_title, recipe_image, num_servings, ready_in_mins, calories, id_category, favorite);
+                    String ingredients= result.getString(8);
+                    String instructions= result.getString(9);
+
+                    Recipe recipe = new Recipe(id, recipe_title, recipe_image, num_servings, ready_in_mins, calories, id_category, favorite, ingredients, instructions);
                     Recipe.recipeList.add(recipe);
                     System.out.println("Siize: "+Recipe.recipeList.size());
                 }
@@ -155,6 +173,60 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL("DELETE FROM "+ TABLE2);
     }
+
+    //get recipe details
+    public Recipe getRecipeById(int idRecipe) {
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        Recipe recipe = null;
+
+        try (Cursor result = sqLiteDatabase.rawQuery("SELECT * FROM " + TABLE2 + " WHERE rowid = " + idRecipe, null)) {
+            if (result.getCount() != 0) {
+                while (result.moveToNext()) {
+                    int id = result.getInt(0);
+                    String recipe_title = result.getString(1);
+                    String recipe_image = result.getString(2);
+                    int num_servings = result.getInt(3);
+                    int ready_in_mins = result.getInt(4);
+                    float calories = result.getFloat(5);
+                    int id_category = result.getInt(6);
+                    int favorite = result.getInt(7);
+                    String ingredients= result.getString(8);
+                    String instructions= result.getString(9);
+
+                    recipe = new Recipe(id, recipe_title, recipe_image, num_servings, ready_in_mins, calories, id_category, favorite, ingredients, instructions);
+                }
+            }}
+      return recipe;
+    }
+
+    // get ingredient details
+    public Ingredient getIngredientById(int idIngredient) {
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+        Ingredient ingredient = null;
+
+        try (Cursor result = sqLiteDatabase.rawQuery("SELECT * FROM " + TABLE3 + " WHERE rowid = " + idIngredient, null)) {
+            if (result.getCount() != 0) {
+                while (result.moveToNext()) {
+                    int id = result.getInt(0);
+                    String name = result.getString(1);
+                    String thumbnail = result.getString(2);
+                    ingredient = new Ingredient(id, name, thumbnail);
+                    //System.out.println("Siize: "+Recipe.recipeList.size());
+                }
+            }}
+        return ingredient;
+    }
+
+    // Add ingredient
+    public void addIngredient(String name, String thumbnail) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+        cv.put("name", name);
+        cv.put("thumbnail", thumbnail);
+        db.insert("Ingredient", null, cv);
+    }
+
 
     //-----------------Display
     public static MyDatabaseHelper instanceOfDatabase(Context context) {

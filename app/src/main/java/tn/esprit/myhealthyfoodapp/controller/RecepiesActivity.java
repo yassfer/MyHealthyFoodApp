@@ -41,12 +41,12 @@ public class RecepiesActivity extends AppCompatActivity {
         deleteBeforLoad();
 
         MyDatabaseHelper db = new MyDatabaseHelper(RecepiesActivity.this);
-        db.addRecipe("Thai Basil Beef", "https://images.themodernproper.com/billowy-turkey/production/posts/2020/Thai-Basil-Beef-11.jpg?w=1200&auto=compress%2Cformat&fit=crop&fp-x=0.5&fp-y=0.5&dm=1606103993&s=d566d278b6f76803ed574ede574ac7c7", 4, 25, 327, 1);
-        db.addRecipe("Gingery Ground Beef", "https://images.themodernproper.com/billowy-turkey/production/posts/2020/Ginger-Ground-Beef-9.jpg?w=667&auto=compress%2Cformat&fit=crop&fp-x=0.5&fp-y=0.5&dm=1606105580&s=f28a3dc2e50e46fbd6e686ea9192dfb9", 4, 20, 269, 1);
+        db.addRecipe("Thai Basil Beef", "https://images.themodernproper.com/billowy-turkey/production/posts/2020/Thai-Basil-Beef-11.jpg?w=1200&auto=compress%2Cformat&fit=crop&fp-x=0.5&fp-y=0.5&dm=1606103993&s=d566d278b6f76803ed574ede574ac7c7", 4, 25, 327, 1,"1,2,3","test inst");
+        db.addRecipe("Gingery Ground Beef", "https://images.themodernproper.com/billowy-turkey/production/posts/2020/Ginger-Ground-Beef-9.jpg?w=667&auto=compress%2Cformat&fit=crop&fp-x=0.5&fp-y=0.5&dm=1606105580&s=f28a3dc2e50e46fbd6e686ea9192dfb9", 4, 20, 269, 1,"1","test inst");
 
-        db.addRecipe("Avocado salad", "https://www.kindpng.com/picc/m/110-1105729_meal-png-download-image-food-top-view-png.png", 6, 30, 300, 3);
-        db.addRecipe("Broccoli salad", "https://www.fifteenspatulas.com/wp-content/uploads/2014/01/Broccoli-Salad-Fifteen-Spatulas-7-500x427.jpg", 6, 30, 320, 3);
-        db.addRecipe("Chicken salad", "https://www.eatwell101.com/wp-content/uploads/2019/04/Blackened-Chicken-and-Avocado-Salad-recipe-1.jpg", 6, 30, 250, 3);
+        db.addRecipe("Avocado salad", "https://www.kindpng.com/picc/m/110-1105729_meal-png-download-image-food-top-view-png.png", 6, 30, 300, 3, "2","test inst");
+        db.addRecipe("Broccoli salad", "https://www.fifteenspatulas.com/wp-content/uploads/2014/01/Broccoli-Salad-Fifteen-Spatulas-7-500x427.jpg", 6, 30, 320, 3, "3","test inst");
+        db.addRecipe("Chicken salad", "https://www.eatwell101.com/wp-content/uploads/2019/04/Blackened-Chicken-and-Avocado-Salad-recipe-1.jpg", 6, 30, 250, 3, "3,2","test inst");
 
         loadFromDBToMemory(idCat);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
