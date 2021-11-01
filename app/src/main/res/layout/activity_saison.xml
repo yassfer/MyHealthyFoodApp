@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F3ECEE"
-    tools:context=".controller.RecepiesActivity">
+    tools:context=".controller.SaisonActivity">
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/Rtoolbar"
+        android:id="@+id/saison_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/color1"
@@ -17,7 +18,7 @@
         android:elevation="4dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/RrecyclerView"
+        android:id="@+id/saison_recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toTopOf="@+id/navigation"
@@ -27,7 +28,7 @@
         android:scrollbars="vertical"
         android:paddingTop="?attr/actionBarSize"
         android:layout_marginBottom="?attr/actionBarSize"
-        />
+        android:gravity="center"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navigation"

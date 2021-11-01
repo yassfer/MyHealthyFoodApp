@@ -15,6 +15,8 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -29,15 +31,20 @@ public class ExtraActivity extends AppCompatActivity {
     private BottomNavigationView bottomNav;
     Button btNotificationOn;
     Button btNotificationOff;
+    Button btSaison;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         setContentView(R.layout.activity_extra);
 
         bottomNav = findViewById(R.id.navigation);
         btNotificationOn = findViewById(R.id.bt_notification_on);
         btNotificationOff = findViewById(R.id.bt_notification_off);
+        btSaison = findViewById(R.id.bt_check_saison);
 
         createNofificationChannel();
 
@@ -58,6 +65,13 @@ public class ExtraActivity extends AppCompatActivity {
             AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
             if(alarmManager != null)
                 alarmManager.cancel(pendingIntent);
+        });
+
+        btSaison.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ExtraActivity.this, SaisonActivity.class));
+            }
         });
 
         this.configureBottomView();

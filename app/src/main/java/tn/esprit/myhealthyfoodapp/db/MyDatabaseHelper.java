@@ -9,15 +9,17 @@ import android.database.sqlite.SQLiteOpenHelper;
 import tn.esprit.myhealthyfoodapp.model.Category;
 import tn.esprit.myhealthyfoodapp.model.Ingredient;
 import tn.esprit.myhealthyfoodapp.model.Recipe;
+import tn.esprit.myhealthyfoodapp.model.Saison;
 
 public class MyDatabaseHelper extends SQLiteOpenHelper {
     SQLiteDatabase db;
     Context context;
     private static final String DATABASE_NAME = "HealthyRecipe.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
     private static final String TABLE1 = "CATEGORY";
     private static final String TABLE2 = "RECIPE";
     private static final String TABLE3 = "INGREDIENT";
+    private static final String TABLE4 = "SAISON";
     private static final String KEY_ROWID = "_id";
     private static MyDatabaseHelper myDatabaseHelper;
 
@@ -33,7 +35,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE1);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE2);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE3);
-
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE4);
 
         onCreate(db);
     }
@@ -42,9 +44,12 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         String sql1 = "CREATE TABLE CATEGORY (_id INTEGER PRIMARY KEY AUTOINCREMENT,category_name TEXT,category_description TEXT, image TEXT)";
         String sql2 = "CREATE TABLE RECIPE (_id INTEGER PRIMARY KEY AUTOINCREMENT,recipe_title TEXT,recipe_image TEXT,num_servings INTEGER,ready_in_mins INTEGER,calories REAL, id_category INTEGER, favorite INTEGER, ingredients TEXT,instructions TEXT )";
         String sql3 = "CREATE TABLE INGREDIENT (_id INTEGER PRIMARY KEY AUTOINCREMENT,name TEXT,thumbnail TEXT)";
+        String sql4 = "CREATE TABLE SAISON (_id INTEGER PRIMARY KEY AUTOINCREMENT,saison_name TEXT, saison_image TEXT)";
+
         db.execSQL(sql1);
         db.execSQL(sql2);
         db.execSQL(sql3);
+        db.execSQL(sql4);
     }
 
     public void tryDB1(){
@@ -67,6 +72,13 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         System.out.println("Table 2 dropped succ !!!");
         String sql3 = "CREATE TABLE INGREDIENT (_id INTEGER PRIMARY KEY AUTOINCREMENT,name TEXT,thumbnail TEXT)";
         db.execSQL(sql3);
+    }
+    public void tryDB4(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE4);
+        System.out.println("Table 2 dropped succ !!!");
+        String sql4 = "CREATE TABLE SAISON (_id INTEGER PRIMARY KEY AUTOINCREMENT,saison_name TEXT, saison_image TEXT)";
+        db.execSQL(sql4);
     }
     // Add Category
     public void addCategory(String category_name, String category_description, String image) {
@@ -119,44 +131,88 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
+    // Add Saison
+    public void addSaison(String saison_name, String saison_image) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+        cv.put("saison_name", saison_name);
+        cv.put("saison_image", saison_image);
+        db.insert("SAISON", null, cv);
+    }
+
+    // Read all saisons
+    public Cursor readAllsaisons() {
+        String query = "SELECT * FROM SAISON";
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = null;
+        if (db != null) {
+            cursor = db.rawQuery(query, null);
+        }
+        return cursor;
+    }
+
     public void getCategoriesListArray() {
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
 
         try (Cursor result = sqLiteDatabase.rawQuery("SELECT * FROM " + TABLE1 , null)) {
-            if (result.getCount() != 0) {
-                while (result.moveToNext()) {
-                    int id = result.getInt(0);
-                    String category_name = result.getString(1);
-                    String category_description = result.getString(2);
-                    String image = result.getString(3);
-                    Category category = new Category(id, category_name, category_description, image);
-                    Category.categoryList.add(category);
+            if(Category.categoryList.isEmpty()){
+                if (result.getCount() != 0) {
+                    while (result.moveToNext()) {
+                        int id = result.getInt(0);
+                        String category_name = result.getString(1);
+                        String category_description = result.getString(2);
+                        String image = result.getString(3);
+                        Category category = new Category(id, category_name, category_description, image);
+                        Category.categoryList.add(category);
+                    }
                 }
             }
         }
     }
 
-    public void getRecipesListArrayByCategoryId(int idCategory) {
+    public void getRecipesListArray() {
         SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
 
-        try (Cursor result = sqLiteDatabase.rawQuery("SELECT * FROM " + TABLE2 + " WHERE id_category = " + idCategory, null)) {
-            if (result.getCount() != 0) {
-                Recipe.recipeList.clear();
-                while (result.moveToNext()) {
-                    int id = result.getInt(0);
-                    String recipe_title = result.getString(1);
-                    String recipe_image = result.getString(2);
-                    int num_servings = result.getInt(3);
-                    int ready_in_mins = result.getInt(4);
-                    float calories = result.getFloat(5);
-                    int id_category = result.getInt(6);
-                    int favorite = result.getInt(7);
-                    String ingredients= result.getString(8);
-                    String instructions= result.getString(9);
+        try (Cursor result = sqLiteDatabase.rawQuery("SELECT * FROM " + TABLE2, null)) {
+            if(Recipe.recipeList.isEmpty()){
+                if (result.getCount() != 0) {
+                    Recipe.recipeList.clear();
+                    while (result.moveToNext()) {
+                        int id = result.getInt(0);
+                        String recipe_title = result.getString(1);
+                        String recipe_image = result.getString(2);
+                        int num_servings = result.getInt(3);
+                        int ready_in_mins = result.getInt(4);
+                        float calories = result.getFloat(5);
+                        int id_category = result.getInt(6);
+                        int favorite = result.getInt(7);
+                        String ingredients= result.getString(8);
+                        String instructions= result.getString(9);
 
-                    Recipe recipe = new Recipe(id, recipe_title, recipe_image, num_servings, ready_in_mins, calories, id_category, favorite, ingredients, instructions);
-                    Recipe.recipeList.add(recipe);
-                    System.out.println("Siize: "+Recipe.recipeList.size());
+                        Recipe recipe = new Recipe(id, recipe_title, recipe_image, num_servings, ready_in_mins, calories, id_category, favorite, ingredients, instructions);
+                        Recipe.recipeList.add(recipe);
+                        System.out.println("Siize: "+Recipe.recipeList.size());
+                    }
+                }
+            }
+        }
+    }
+
+    public void getSaisonsListArray() {
+        SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+
+        try (Cursor result = sqLiteDatabase.rawQuery("SELECT * FROM " + TABLE4 , null)) {
+            if(Saison.saisonListT.isEmpty()){
+                if (result.getCount() != 0) {
+                    while (result.moveToNext()) {
+                        int id = result.getInt(0);
+                        String saison_name = result.getString(1);
+                        String saison_image = result.getString(2);
+                        Saison saison = new Saison(id, saison_name, saison_image);
+                        Saison.saisonListT.add(saison);
+                    }
                 }
             }
         }

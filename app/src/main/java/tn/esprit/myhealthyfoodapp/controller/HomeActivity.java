@@ -19,7 +19,6 @@ import tn.esprit.myhealthyfoodapp.db.MyDatabaseHelper;
 import tn.esprit.myhealthyfoodapp.model.Category;
 
 public class HomeActivity extends AppCompatActivity {
-    public static final String BUNDLE_EXTRA_CATEGORY_ID = "BUNDLE_EXTRA_CATEGORY_ID";
     private RecyclerView recyclerView;
     private BottomNavigationView bottomNav;
 
@@ -27,7 +26,6 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //new
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_home);

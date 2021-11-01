@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:cardview="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardSaisonView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    cardview:cardCornerRadius="8dp"
+    tools:context=".adapter.SaisonAdapter">
+
+    <LinearLayout
+        android:id="@id/layout_saison"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView_saisonName"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:text="Country Name"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:gravity="center" />
+
+        <ImageView
+            android:id="@+id/image_saison"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/background"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
+
+
+
+
+
+

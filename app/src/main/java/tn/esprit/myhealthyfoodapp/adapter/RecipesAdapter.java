@@ -25,19 +25,17 @@ import tn.esprit.myhealthyfoodapp.model.Recipe;
 
 public class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.RecipeViewHolder> {
 
-    /* start of inner ViewHolder class */
     public static class RecipeViewHolder extends RecyclerView.ViewHolder {
-        // declare views
+
         ImageView recipeView;
         TextView recipeNameText;
         TextView readyInText;
         TextView numServingText;
         ImageView favImg;
         public CardView cardView;
-        // Constructor to this inner class
+
         public RecipeViewHolder(@NonNull View itemView) {
             super(itemView);
-            // assign views
             recipeView = itemView.findViewById(R.id.imageView_recipe);
             recipeNameText = itemView.findViewById(R.id.textView_recipeName);
             cardView = (CardView) itemView.findViewById(R.id.cardRecipeView);
@@ -46,9 +44,7 @@ public class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.RecipeVi
             favImg = itemView.findViewById(R.id.fav_image);
         }
     }
-    /* out of inner class : ViewHolder */
 
-    private final String TAG = "RecipesAdapter";
     private Context mContext;
     private List<Recipe> mData;
 
@@ -67,37 +63,30 @@ public class RecipesAdapter extends RecyclerView.Adapter<RecipesAdapter.RecipeVi
     @Override
     public void onBindViewHolder(@NonNull RecipeViewHolder holder, int position) {
         Recipe currentRecipe = mData.get(position);
-        System.out.println(currentRecipe);
-        // Bind Recipe Data to the Card Views
+
         if (currentRecipe.getRecipe_image().isEmpty()) {
-            // No image
             holder.recipeView.setImageResource(R.drawable.nopicture);
         } else {
-
-            System.out.println("entered else" + currentRecipe.getRecipe_image());
-            /*Bitmap bitmap = BitmapFactory.decodeFile(currentRecipe.getRecipeImage());
-            holder.recipeImage.setImageBitmap(bitmap);*/
             Picasso.get().load(currentRecipe.getRecipe_image())
                     .into(holder.recipeView);
         }
         holder.recipeNameText.setText(currentRecipe.getRecipe_title());
         holder.numServingText.setText(String.valueOf(currentRecipe.getNum_servings()));
         holder.readyInText.setText(String.valueOf(currentRecipe.getReady_in_mins()));
-        System.out.println("test fav 1 : => "+ currentRecipe.getFavorite());
         if(currentRecipe.getFavorite() == 1){
             holder.favImg.setImageResource(R.drawable.ic_star_full);
         }
-        // Set Favorite
+
         holder.favImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 currentRecipe.setFavorite(1);
+                Recipe.recipeList.set(currentRecipe.getId()-1, currentRecipe);
                 Intent i = new Intent(view.getContext(), HomeActivity.class);
                 view.getContext().startActivity(i);
-                System.out.println("test fav 2 : => "+ currentRecipe.getFavorite());
             }
         });
-        // Ensure CardView is clickable
+
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

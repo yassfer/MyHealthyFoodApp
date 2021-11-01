@@ -19,14 +19,16 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="162dp"
+        android:layout_height="150dp"
         android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@+id/extrat_toolbar">
+        app:layout_constraintTop_toBottomOf="@+id/extrat_toolbar"
+        android:id= "@+id/layout_water"
+        android:layout_marginVertical="5dp">
 
         <ImageView
             android:id="@+id/image_extrat"
             android:layout_width="170dp"
-            android:layout_height="160dp"
+            android:layout_height="match_parent"
             android:background="@color/color5"
             android:contentDescription="image of extrat activity"
             android:scaleType="centerCrop"
@@ -34,7 +36,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="159dp"
+            android:layout_height="150dp"
             android:orientation="vertical">
 
             <TextView
@@ -67,8 +69,58 @@
                     android:layout_weight="1"
                     android:text="Désactiver" />
             </LinearLayout>
+
         </LinearLayout>
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/layout_water"
+        android:id= "@+id/layout_saison"
+        android:layout_marginVertical="5dp">
+
+        <ImageView
+            android:id="@+id/image_saison"
+            android:layout_width="170dp"
+            android:layout_height="match_parent"
+            android:background="@color/color5"
+            android:contentDescription="image of extrat activity"
+            android:scaleType="centerCrop"
+            android:src="@drawable/fruitslegumessaison" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/title_saison"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/fredoka_one"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="Découver fruits et légumes des saisons"
+                android:textColor="@color/textColor"
+                android:textSize="13sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/bt_check_saison"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Activer" />
+
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
 
 

@@ -7,6 +7,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -35,6 +37,9 @@ public class ProfilActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         setContentView(R.layout.activity_profil);
 
         bottomNav = findViewById(R.id.navigation);
@@ -90,6 +95,7 @@ public class ProfilActivity extends AppCompatActivity {
             profile_age.setText(Integer.toString(age));
             profile_height.setText(Integer.toString(height));
             profile_weight.setText(Integer.toString(weight));
+            System.out.println("weight/height=> "+weight/height);
             profile_imc.setText(Float.toString(weight/height) );
             profile_cal.setText(Integer.toString(1000));
         }

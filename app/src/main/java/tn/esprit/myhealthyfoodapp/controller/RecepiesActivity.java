@@ -19,15 +19,14 @@ import tn.esprit.myhealthyfoodapp.db.MyDatabaseHelper;
 import tn.esprit.myhealthyfoodapp.model.Recipe;
 
 public class RecepiesActivity extends AppCompatActivity {
+
     private RecyclerView recyclerView;
     private int idCat;
-
     private BottomNavigationView bottomNav;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //new
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_recepies);
@@ -35,8 +34,6 @@ public class RecepiesActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.RrecyclerView);
         bottomNav = findViewById(R.id.navigation);
         idCat = getIntent().getExtras().getInt("ID_CATEGORY");
-        System.out.println("idCaaaa: "+idCat);
-
 
         deleteBeforLoad();
 
@@ -50,7 +47,7 @@ public class RecepiesActivity extends AppCompatActivity {
 
         loadFromDBToMemory(idCat);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-        RecyclerView.Adapter mAdapter = new RecipesAdapter(this, Recipe.recipeList);
+        RecyclerView.Adapter mAdapter = new RecipesAdapter(this, Recipe.recipeListT);
 
         recyclerView.setAdapter(mAdapter);
         this.configureBottomView();
@@ -65,7 +62,14 @@ public class RecepiesActivity extends AppCompatActivity {
 
     private void loadFromDBToMemory(int id) {
         MyDatabaseHelper dbhelper = MyDatabaseHelper.instanceOfDatabase(this);
-        dbhelper.getRecipesListArrayByCategoryId(id);
+        dbhelper.getRecipesListArray();
+        Recipe.recipeListT.clear();
+        for (Recipe recipe: Recipe.recipeList) {
+            if(recipe.getId_category() == id){
+                Recipe.recipeListT.add(recipe);
+            }
+        }
+        System.out.println(Recipe.recipeListT.size());
     }
 
     private void deleteBeforLoad(){

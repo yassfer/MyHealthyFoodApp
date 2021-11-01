@@ -4,16 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".controller.ProfilActivity">
+    tools:context=".controller.ProfilActivity"
+    >
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/color1"
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/color1"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         app:title="Home" />
 
@@ -21,7 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="?attr/actionBarSize"
-        android:background="@drawable/bg"
+        android:background="@drawable/bgg4"
         android:orientation="vertical"
         android:paddingTop="?attr/actionBarSize"
         app:layout_constraintBottom_toTopOf="@+id/navigation"
@@ -46,6 +47,7 @@
                 android:layout_marginBottom="9dp"
                 android:adjustViewBounds="true"
                 android:background="@drawable/circle"
+                tools:ignore="ImageContrastCheck"
                 tools:src="@tools:sample/avatars" />
 
             <TextView

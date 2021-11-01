@@ -3,6 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/dell/AndroidStudioProjects/Final/MyHealthyFoodApp/app/src/main/res/layout/activity_extra.xml" value="0.1" />
+        <entry key="..\:/Users/dell/AndroidStudioProjects/Final/MyHealthyFoodApp/app/src/main/res/layout/activity_home.xml" value="0.1" />
+        <entry key="..\:/Users/dell/AndroidStudioProjects/Final/MyHealthyFoodApp/app/src/main/res/layout/activity_profil.xml" value="0.1" />
+        <entry key="..\:/Users/dell/AndroidStudioProjects/Final/MyHealthyFoodApp/app/src/main/res/layout/activity_recepies.xml" value="0.1" />
+        <entry key="..\:/Users/dell/AndroidStudioProjects/Final/MyHealthyFoodApp/app/src/main/res/layout/activity_saison.xml" value="0.1" />
+        <entry key="..\:/Users/dell/AndroidStudioProjects/Final/MyHealthyFoodApp/app/src/main/res/layout/activity_saison_adapter.xml" value="0.1" />
         <entry key="..\:/Users/dell/AndroidStudioProjects/MyHealthyFoodApp-main-20211011T211018Z-001/MyHealthyFoodApp-main/app/src/main/res/layout/activity_home.xml" value="0.1359375" />
         <entry key="..\:/Users/dell/AndroidStudioProjects/MyHealthyFoodApp-main-20211011T211018Z-001/MyHealthyFoodApp-main/app/src/main/res/layout/activity_login.xml" value="0.1359375" />
         <entry key="..\:/Users/dell/AndroidStudioProjects/MyHealthyFoodApp-main-20211011T211018Z-001/MyHealthyFoodApp-main/app/src/main/res/layout/activity_menu_nav.xml" value="0.1" />

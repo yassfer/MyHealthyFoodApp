@@ -52,6 +52,7 @@ public class RecipeDetails extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_recipe_details);
         bottomNav = findViewById(R.id.navigation);
 
