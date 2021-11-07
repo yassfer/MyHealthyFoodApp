@@ -34,6 +34,9 @@ public class ProfilActivity extends AppCompatActivity {
     private EditText profile_height;
     private EditText profile_weight;
     private Button updateBtn;
+    private Button dietBtn;
+    private int calories = 1000;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +54,7 @@ public class ProfilActivity extends AppCompatActivity {
         profile_height = findViewById(R.id.profile_height);
         profile_weight = findViewById(R.id.profile_weight);
         updateBtn = findViewById(R.id.update_profile_btn);
-
+        dietBtn = findViewById(R.id.diet_btn);
         initilizeProfile();
 
         updateBtn.setOnClickListener(new View.OnClickListener() {
@@ -69,6 +72,14 @@ public class ProfilActivity extends AppCompatActivity {
                 overridePendingTransition(0, 0);
                 startActivity(i);
                 overridePendingTransition(0, 0);
+            }
+        });
+        dietBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in = new Intent(v.getContext(), DietActivity.class);
+                in.putExtra("calories", calories);
+                v.getContext().startActivity(in);
             }
         });
 
@@ -97,7 +108,7 @@ public class ProfilActivity extends AppCompatActivity {
             profile_weight.setText(Integer.toString(weight));
             System.out.println("weight/height=> "+weight/height);
             profile_imc.setText(Float.toString(weight/height) );
-            profile_cal.setText(Integer.toString(1000));
+            profile_cal.setText(Integer.toString(calories));
         }
 
     }

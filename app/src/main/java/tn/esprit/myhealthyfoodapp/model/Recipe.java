@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Recipe {
     public static ArrayList<Recipe> recipeList = new ArrayList<>();
     public static ArrayList<Recipe> recipeListT = new ArrayList<>();
+    public static ArrayList<Recipe> recipeListD = new ArrayList<>();
 
     private int id;
     private String recipe_title;

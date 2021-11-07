@@ -24,6 +24,9 @@
             android:name=".controller.ExtraActivity"
             android:exported="true" />
         <activity
+            android:name=".controller.DietActivity"
+            android:exported="true" />
+        <activity
             android:name=".controller.RecepiesActivity"
             android:exported="true" />
         <activity

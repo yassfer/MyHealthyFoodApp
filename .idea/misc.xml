@@ -58,11 +58,17 @@
         <entry key="..\:/Users/dell/AndroidStudioProjects/new/MyHealthyFoodApp-main/app/src/main/res/layout/fragment_notifications.xml" value="0.1" />
         <entry key="..\:/Users/dell/AndroidStudioProjects/new/MyHealthyFoodApp-main/app/src/main/res/menu/bottom_nav_menu.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_categories_adapter.xml" value="0.13496376811594202" />
+        <entry key="app/src/main/res/layout/activity_diet.xml" value="0.1752786220871327" />
+        <entry key="app/src/main/res/layout/activity_extrat_adapter.xml" value="0.1752786220871327" />
         <entry key="app/src/main/res/layout/activity_get_started.xml" value="0.13903985507246377" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.1752786220871327" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.13903985507246377" />
+        <entry key="app/src/main/res/layout/activity_menu_nav.xml" value="0.1752786220871327" />
+        <entry key="app/src/main/res/layout/activity_profil.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_recepies.xml" value="0.13496376811594202" />
         <entry key="app/src/main/res/layout/activity_recipe_details.xml" value="0.13496376811594202" />
         <entry key="app/src/main/res/layout/activity_recipes_adapter.xml" value="0.13496376811594202" />
+        <entry key="app/src/main/res/layout/activity_saison.xml" value="0.17617753623188406" />
       </map>
     </option>
   </component>
