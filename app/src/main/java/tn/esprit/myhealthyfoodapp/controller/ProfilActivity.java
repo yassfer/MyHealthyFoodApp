@@ -26,7 +26,7 @@ public class ProfilActivity extends AppCompatActivity {
     private static final String SHARED_PREF_USER_INFO_WEIGHT = "SHARED_PREF_USER_INFO_WEIGHT";
 
     private BottomNavigationView bottomNav;
-    private TextView profile_name;
+    private TextView profile_remarq;
     private TextView profile_imc;
     private TextView profile_cal;
     private EditText profile_userName;
@@ -34,9 +34,9 @@ public class ProfilActivity extends AppCompatActivity {
     private EditText profile_height;
     private EditText profile_weight;
     private Button updateBtn;
+
     private Button dietBtn;
     private int calories = 1000;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +46,7 @@ public class ProfilActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profil);
 
         bottomNav = findViewById(R.id.navigation);
-        profile_name = findViewById(R.id.profile_name);
+        profile_remarq = findViewById(R.id.profile_remarq);
         profile_imc = findViewById(R.id.profile_imc);
         profile_cal = findViewById(R.id.profile_calories);
         profile_userName = findViewById(R.id.profile_userName);
@@ -55,6 +55,7 @@ public class ProfilActivity extends AppCompatActivity {
         profile_weight = findViewById(R.id.profile_weight);
         updateBtn = findViewById(R.id.update_profile_btn);
         dietBtn = findViewById(R.id.diet_btn);
+
         initilizeProfile();
 
         updateBtn.setOnClickListener(new View.OnClickListener() {
@@ -82,7 +83,6 @@ public class ProfilActivity extends AppCompatActivity {
                 v.getContext().startActivity(in);
             }
         });
-
         this.configureBottomView();
     }
 
@@ -96,19 +96,31 @@ public class ProfilActivity extends AppCompatActivity {
     private void initilizeProfile() {
         String userName = getSharedPreferences(SHARED_PREF_USER_INFO, MODE_PRIVATE).getString(SHARED_PREF_USER_INFO_NAME, null);
         int age = getSharedPreferences(SHARED_PREF_USER_INFO, MODE_PRIVATE).getInt(SHARED_PREF_USER_INFO_AGE, -1);
-        int height = getSharedPreferences(SHARED_PREF_USER_INFO, MODE_PRIVATE).getInt(SHARED_PREF_USER_INFO_HEIGHT, -1);
-        int weight = getSharedPreferences(SHARED_PREF_USER_INFO, MODE_PRIVATE).getInt(SHARED_PREF_USER_INFO_WEIGHT, -1);
+        float height = getSharedPreferences(SHARED_PREF_USER_INFO, MODE_PRIVATE).getFloat(SHARED_PREF_USER_INFO_HEIGHT, -1);
+        float weight = getSharedPreferences(SHARED_PREF_USER_INFO, MODE_PRIVATE).getFloat(SHARED_PREF_USER_INFO_WEIGHT, -1);
 
         if (userName != null) {
-            System.out.println("naaaame:: "+userName);
-            profile_name.setText(userName);
             profile_userName.setText(userName);
             profile_age.setText(Integer.toString(age));
-            profile_height.setText(Integer.toString(height));
-            profile_weight.setText(Integer.toString(weight));
-            System.out.println("weight/height=> "+weight/height);
-            profile_imc.setText(Float.toString(weight/height) );
-            profile_cal.setText(Integer.toString(calories));
+            profile_height.setText(Float.toString(height));
+            profile_weight.setText(Float.toString(weight));
+            //profile_imc.setText(Float.toString(weight/(height*height)) );
+            float imc = weight/(height*height);
+            profile_imc.setText(Float.toString((float) (Math.round(imc * 100.0) / 100.0)));
+            if( imc < 18.5){
+                profile_remarq.setText("Your weight appears too low for your height. This low BMI is perhaps the consequence of pathology, but it can expose you to a certain number of risks for your health. Talk to your doctor. He can look for the cause of this thinness and advise you.");
+                profile_cal.setText(Integer.toString(3000));
+            }else if (imc>18.5 && imc<24.9){
+                profile_remarq.setText("Your weight is adapted to your height. Stick to your eating habits to maintain an ideal BMI and a weight that ensures optimal health. A balanced diet, without excess fat, combined with regular physical activity will help you maintain your ideal weight.");
+                profile_cal.setText(Integer.toString(2500));
+            }else if( imc>25 && imc<29.9){
+                profile_remarq.setText("Your weight is starting to get too heavy for your height. In the long term, a high body mass index (BMI) has consequences for your health. If you want to start a diet to lose weight, talk to your doctor beforehand.");
+                profile_cal.setText(Integer.toString(2000));
+            }else{
+                profile_remarq.setText("Your weight is too high for your height. From a medical point of view, obesity is an excess of fat mass with consequences on health. If you want to start a diet to lose weight, talk to your doctor beforehand.");
+                profile_cal.setText(Integer.toString(1800));
+            }
+
         }
 
     }
@@ -129,6 +141,9 @@ public class ProfilActivity extends AppCompatActivity {
                 break;
             case  R.id.navigation_notifications:
                 activity = new ExtraActivity();
+                break;
+            case R.id.navigation_favorite:
+                activity = new FavoriteActivity();
                 break;
         }
         startActivity(new Intent(this, activity.getClass()));

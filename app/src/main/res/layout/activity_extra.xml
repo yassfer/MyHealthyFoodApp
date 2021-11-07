@@ -14,6 +14,7 @@
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         app:layout_constraintTop_toTopOf="parent"
         app:title="Extrat activities"
+        app:titleTextColor="@color/white"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         android:elevation="4dp"/>
 
@@ -46,7 +47,7 @@
                 android:fontFamily="@font/fredoka_one"
                 android:gravity="center"
                 android:padding="10dp"
-                android:text="Rappel d'eau"
+                android:text="Water reminder"
                 android:textColor="@color/textColor"
                 android:textSize="13sp" />
 
@@ -60,14 +61,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Activer" />
+                    android:text="Activate" />
 
                 <Button
                     android:id="@+id/bt_notification_off"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Désactiver" />
+                    android:text="Deactivate" />
             </LinearLayout>
 
         </LinearLayout>
@@ -103,7 +104,7 @@
                 android:fontFamily="@font/fredoka_one"
                 android:gravity="center"
                 android:padding="10dp"
-                android:text="Découver fruits et légumes des saisons"
+                android:text="seasonal fruits and vegetables"
                 android:textColor="@color/textColor"
                 android:textSize="13sp" />
 
@@ -117,7 +118,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Activer" />
+                    android:text="Check" />
 
             </LinearLayout>
         </LinearLayout>
@@ -129,7 +130,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@color/color1"
-        app:itemIconTint="@color/color3"
+        app:itemIconTint="@color/white"
         app:itemTextColor="@color/white"
         app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior"
         app:layout_constraintBottom_toBottomOf="parent"

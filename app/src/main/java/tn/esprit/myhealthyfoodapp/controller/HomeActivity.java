@@ -110,6 +110,9 @@ public class HomeActivity extends AppCompatActivity {
             case  R.id.navigation_notifications:
                 activity = new ExtraActivity();
                 break;
+            case R.id.navigation_favorite:
+                activity = new FavoriteActivity();
+                break;
         }
         startActivity(new Intent(this, activity.getClass()));
         return true;

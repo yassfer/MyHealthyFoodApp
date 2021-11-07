@@ -13,7 +13,7 @@ public class ReminderBroadcast extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        String message = "C'est le temps!! boire un verre d'eau!!";
+        String message = "It's time!! drink a glass of water!!";
         NotificationCompat.Builder builder = new NotificationCompat.Builder(
                 context, "water_notification")
         .setSmallIcon(R.drawable.ic_alert)

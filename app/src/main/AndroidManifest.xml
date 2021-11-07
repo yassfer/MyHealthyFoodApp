@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyHealthyFoodApp">
         <activity
+            android:name=".controller.FavoriteActivity"
+            android:exported="true" />
+        <activity
             android:name=".controller.SaisonActivity"
             android:exported="true" />
         <activity

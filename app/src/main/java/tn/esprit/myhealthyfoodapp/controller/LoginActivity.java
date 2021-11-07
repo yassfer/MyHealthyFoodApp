@@ -51,8 +51,8 @@ public class LoginActivity extends AppCompatActivity {
                         .edit()
                         .putString(SHARED_PREF_USER_INFO_NAME, mUsernameText.getText().toString())
                         .putInt(SHARED_PREF_USER_INFO_AGE, Integer.parseInt(mAgeText.getText().toString()))
-                        .putInt(SHARED_PREF_USER_INFO_HEIGHT, Integer.parseInt(mHeightText.getText().toString()))
-                        .putInt(SHARED_PREF_USER_INFO_WEIGHT, Integer.parseInt(mWeightText.getText().toString()))
+                        .putFloat(SHARED_PREF_USER_INFO_HEIGHT, Float.parseFloat(mHeightText.getText().toString()))
+                        .putFloat(SHARED_PREF_USER_INFO_WEIGHT, Float.parseFloat(mWeightText.getText().toString()))
                         .apply();
                 startActivity(new Intent(LoginActivity.this, HomeActivity.class));
             }
@@ -63,8 +63,8 @@ public class LoginActivity extends AppCompatActivity {
     private void greetUser() {
         String userName = getSharedPreferences(SHARED_PREF_USER_INFO, MODE_PRIVATE).getString(SHARED_PREF_USER_INFO_NAME, null);
         int age = getSharedPreferences(SHARED_PREF_USER_INFO, MODE_PRIVATE).getInt(SHARED_PREF_USER_INFO_AGE, -1);
-        int height = getSharedPreferences(SHARED_PREF_USER_INFO, MODE_PRIVATE).getInt(SHARED_PREF_USER_INFO_HEIGHT, -1);
-        int weight = getSharedPreferences(SHARED_PREF_USER_INFO, MODE_PRIVATE).getInt(SHARED_PREF_USER_INFO_WEIGHT, -1);
+        float height = getSharedPreferences(SHARED_PREF_USER_INFO, MODE_PRIVATE).getFloat(SHARED_PREF_USER_INFO_HEIGHT, -1);
+        float weight = getSharedPreferences(SHARED_PREF_USER_INFO, MODE_PRIVATE).getFloat(SHARED_PREF_USER_INFO_WEIGHT, -1);
 
         if (userName != null) {
             //mGreetingText.setText("Welcome back, {userName} !");
@@ -75,8 +75,8 @@ public class LoginActivity extends AppCompatActivity {
             }*/
             mUsernameText.setText(userName);
             mAgeText.setText(Integer.toString(age));
-            mHeightText.setText(Integer.toString(height));
-            mWeightText.setText(Integer.toString(weight));
+            mHeightText.setText(Float.toString(height));
+            mWeightText.setText(Float.toString(weight));
         }
     }
 }

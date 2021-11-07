@@ -1,6 +1,7 @@
 package tn.esprit.myhealthyfoodapp.controller;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.widget.Toolbar;
@@ -8,8 +9,12 @@ import androidx.appcompat.widget.Toolbar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.inputmethod.EditorInfo;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -23,7 +28,7 @@ public class RecepiesActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private int idCat;
     private BottomNavigationView bottomNav;
-
+    private RecipesAdapter  adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +39,6 @@ public class RecepiesActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.RrecyclerView);
         bottomNav = findViewById(R.id.navigation);
         idCat = getIntent().getExtras().getInt("ID_CATEGORY");
-
         deleteBeforLoad();
 
         MyDatabaseHelper db = new MyDatabaseHelper(RecepiesActivity.this);
@@ -94,8 +98,37 @@ public class RecepiesActivity extends AppCompatActivity {
             case  R.id.navigation_notifications:
                 activity = new RecepiesActivity();
                 break;
+            case R.id.navigation_favorite:
+                activity = new FavoriteActivity();
+                break;
         }
         startActivity(new Intent(this, activity.getClass()));
         return true;
     }
+
+    /*@Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.search_menu, menu);
+        System.out.println("hhhhh1");
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) searchItem.getActionView();
+
+        searchView.setImeOptions(EditorInfo.IME_ACTION_DONE);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                System.out.println("eeeee");
+                adapter.getFilter().filter(newText);
+                return false;
+            }
+        });
+        return super.onCreateOptionsMenu(menu);
+    }*/
 }
