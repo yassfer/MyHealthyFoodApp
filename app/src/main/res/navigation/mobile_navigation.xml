@@ -22,4 +22,9 @@
         android:name="tn.esprit.myhealthyfoodapp.controller.RecepiesActivity"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
+    <fragment
+        android:id="@+id/navigation_sport"
+        android:name="tn.esprit.myhealthyfoodapp.controller.ListExercisesActivity"
+        android:label="Workout"
+        tools:layout="@layout/activity_list_exercises" />
 </navigation>

@@ -118,6 +118,9 @@ public class ExtraActivity extends AppCompatActivity {
             case R.id.navigation_favorite:
                 activity = new FavoriteActivity();
                 break;
+            case  R.id.navigation_sport:
+                activity = new ListExercisesActivity();
+                break;
         }
         startActivity(new Intent(this, activity.getClass()));
         return true;

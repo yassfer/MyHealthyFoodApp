@@ -5,6 +5,10 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.database.sqlite.SQLiteQueryBuilder;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import tn.esprit.myhealthyfoodapp.model.Category;
 import tn.esprit.myhealthyfoodapp.model.Ingredient;
@@ -21,6 +25,13 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     private static final String TABLE3 = "INGREDIENT";
     private static final String TABLE4 = "SAISON";
     private static final String KEY_ROWID = "_id";
+    private static final String TABLE5 = "SettingsActivity";
+
+    private static final String TABLE6 = "WorkoutDays";
+
+    private static final String TABLE7 = "Mode";
+
+    private static final String TABLE8 = "Day";
     private static MyDatabaseHelper myDatabaseHelper;
 
     public MyDatabaseHelper(Context context) {
@@ -283,7 +294,46 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         db.insert("Ingredient", null, cv);
     }
 
+    // Save settings to database, 0 = Easy, 1 = Medium, 2 = Hard
+    public void saveSettingsMode(int value) {
+        SQLiteDatabase database = getReadableDatabase();
 
+        String query = "UPDATE " + TABLE5 + " SET " + TABLE7 + " = "  + value;
+
+        database.execSQL(query);
+    }
+
+    // Retrieve workout days from db
+    public List<String> getWorkOutDays() {
+        SQLiteDatabase database = getReadableDatabase();
+        SQLiteQueryBuilder queryBuilder = new SQLiteQueryBuilder();
+
+        String[] sqlSelect = {TABLE8};
+
+        queryBuilder.setTables(TABLE6);
+
+        Cursor cursor = queryBuilder.query(database, sqlSelect, null, null, null, null, null);
+
+        List<String> workoutDays = new ArrayList<>();
+
+        if (cursor.moveToFirst()) {
+            do {
+                workoutDays.add(cursor.getString(cursor.getColumnIndex(TABLE8)));
+            } while (cursor.moveToNext());
+        }
+
+        return workoutDays;
+    }
+
+    // Save workout day to db
+    public void saveWorkoutDay(String value) {
+        SQLiteDatabase database = getReadableDatabase();
+
+        String query = String.format("INSERT INTO " + TABLE6 + "(" + TABLE8 + ")"
+                + " VALUES(%s)", value);
+
+        database.execSQL(query);
+    }
     //-----------------Display
     public static MyDatabaseHelper instanceOfDatabase(Context context) {
         if (myDatabaseHelper == null)

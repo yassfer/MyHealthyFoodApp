@@ -23,4 +23,9 @@
     <color name="color4">#ffc146</color>
     <color name="color5">#4dd291</color>
     <color name="textColor">#330000</color>
+    <color name="colorPrimary">#004d40</color>
+    <color name="colorPrimaryDark">#00251a</color>
+    <color name="colorAccent">#fff</color>
+    <color name="pink">#FFC0CB</color>
+    <color name="indigo">#3964C3</color>
 </resources>

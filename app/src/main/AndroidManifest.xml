@@ -27,6 +27,12 @@
             android:name=".controller.ExtraActivity"
             android:exported="true" />
         <activity
+            android:name=".controller.ListExercisesActivity"
+            android:exported="true" />
+        <activity
+            android:name=".controller.ViewExerciseActivity"
+            android:exported="true" />
+        <activity
             android:name=".controller.DietActivity"
             android:exported="true" />
         <activity

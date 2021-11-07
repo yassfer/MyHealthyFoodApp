@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".controller.ListExercisesActivity">
+
+    <TextView
+        android:id="@+id/titlex"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/color1"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="@string/exercise_name"
+        android:textColor="@android:color/white"
+        android:textSize="24sp" />
+    
+    <ImageView
+        android:id="@+id/image_detail"
+        android:src="@drawable/boat_pose"
+        android:layout_centerInParent="true"
+        android:layout_width="300dp"
+        android:layout_height="200dp" />
+
+    <Button
+        android:id="@+id/start_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/color1"
+        android:shadowColor="@color/colorPrimaryDark"
+        android:text="@string/start"
+        android:textColor="@android:color/white" />
+
+    <EditText
+        android:id="@+id/timerr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/start_button"
+        android:layout_centerHorizontal="true"
+        android:text="@string/_20"
+        android:textColor="@color/color1"
+        android:textSize="50sp"
+        android:textStyle="bold" />
+
+</RelativeLayout>

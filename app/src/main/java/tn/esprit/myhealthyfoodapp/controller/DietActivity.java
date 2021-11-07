@@ -78,6 +78,9 @@ public class DietActivity extends AppCompatActivity {
             case  R.id.navigation_notifications:
                 activity = new RecepiesActivity();
                 break;
+            case  R.id.navigation_sport:
+                activity = new ListExercisesActivity();
+                break;
         }
         startActivity(new Intent(this, activity.getClass()));
         return true;

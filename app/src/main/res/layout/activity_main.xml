@@ -37,7 +37,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/fredoka_one"
         android:text="@string/food_for_everyone"
-        android:textColor="#FA4A0C"
+        android:textColor="@color/color1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

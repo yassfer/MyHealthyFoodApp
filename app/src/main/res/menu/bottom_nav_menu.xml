@@ -20,8 +20,8 @@
         android:icon="@drawable/ic_favorite"
         android:title="Favorite" />
     <item
-        android:id="@+id/navigation_repport"
-        android:icon="@drawable/ic_dashboard"
-        android:title="Repport" />
+        android:id="@+id/navigation_sport"
+        android:icon="@drawable/ic_baseline_fitness_center_24"
+        android:title="Workout" />
 
 </menu>
