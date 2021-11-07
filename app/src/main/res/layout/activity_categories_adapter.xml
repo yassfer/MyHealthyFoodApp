@@ -25,7 +25,7 @@
             android:background="@color/color4"
             android:padding="10dp"
             android:contentDescription="@string/img_of_recipe"
-            android:scaleType="centerCrop" />
+            android:scaleType="fitXY"/>
 
         <TextView
             android:id="@+id/title_of_category"
