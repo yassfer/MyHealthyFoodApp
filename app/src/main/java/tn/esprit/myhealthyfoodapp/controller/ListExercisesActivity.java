@@ -1,12 +1,17 @@
 package tn.esprit.myhealthyfoodapp.controller;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import tn.esprit.myhealthyfoodapp.adapter.RecyclerViewAdapter;
 import tn.esprit.myhealthyfoodapp.Utils.DataInitializer;
@@ -45,4 +50,6 @@ public class ListExercisesActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(recyclerViewAdapter);
     }
+
 }
+cd 

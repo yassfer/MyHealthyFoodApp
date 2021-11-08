@@ -36,7 +36,7 @@
         android:id="@+id/navigation"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="#990033"
+        android:background="@color/color1"
         app:itemIconTint="@color/white"
         app:itemTextColor="@color/white"
         app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior"
