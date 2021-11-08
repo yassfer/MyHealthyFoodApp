@@ -3,6 +3,8 @@ package tn.esprit.myhealthyfoodapp.controller;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -52,6 +54,8 @@ public class RecipeDetails extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.activity_recipe_details);
         bottomNav = findViewById(R.id.navigation);
@@ -133,7 +137,10 @@ public class RecipeDetails extends AppCompatActivity {
                 activity = new ProfilActivity();
                 break;
             case  R.id.navigation_notifications:
-                activity = new RecepiesActivity();
+                activity = new ExtraActivity();
+                break;
+            case R.id.navigation_favorite:
+                activity = new FavoriteActivity();
                 break;
             case  R.id.navigation_sport:
                 activity = new ListExercisesActivity();

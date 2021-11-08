@@ -111,7 +111,7 @@ public class RecepiesActivity extends AppCompatActivity {
                 activity = new ProfilActivity();
                 break;
             case  R.id.navigation_notifications:
-                activity = new RecepiesActivity();
+                activity = new ExtraActivity();
                 break;
             case R.id.navigation_favorite:
                 activity = new FavoriteActivity();
